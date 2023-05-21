@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  frontend:    
+    image: gusolivares/api-topic-front:2.0
+    ports:
+      - 4000:3000
+    depends_on:
+      - backend
+    networks:
+      - topic-network
+    restart: always    
+  backend:
+    image: gusolivares/api-topic-backend:2.0
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb
+    networks:
+      - topic-network
+    restart: always   
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: gus
+      MONGO_INITDB_ROOT_PASSWORD: clavesecreta
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - topic-network
+
+volumes:
+  mongo-data: 
+networks:
+  topic-network:
+    driver: bridge 
