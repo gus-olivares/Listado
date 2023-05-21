@@ -1,5 +1,5 @@
 #Grupo 3
-#Integrantes = [Gustavo Olivares , Yedixa Yanez , Sebastian Torres]
+
 
 #El Archivo cuenta con los servicios Frontend / Backend / DB / Network / Volume
 
